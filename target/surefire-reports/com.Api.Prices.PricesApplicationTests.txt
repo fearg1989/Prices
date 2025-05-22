@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.Api.Prices.PricesApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.201 s -- in com.Api.Prices.PricesApplicationTests
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.015 s -- in com.Api.Prices.PricesApplicationTests

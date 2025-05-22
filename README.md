@@ -1,2 +1,35 @@
-# Prices
-Repository - Prices Project
+# Prices API
+🚀 Project developed with **Spring Boot**, **Docker**, **Flyway**, **H2**, and **Hexagonal Architecture**.
+
+Autor: Felix Rodriguez
+
+Email: felixalejandr33@gmail.com
+
+## Technologies Used
+- **Java 23** → Programming language.
+- **Spring Boot** → Backend framework.
+- **Hexagonal Architecture** → Decoupled and modular design.
+- **Flyway** → Database versioning.
+- **H2 Database** → In-memory database for testing.
+- **Docker** → Containerized deployment.
+
+## How to Run the Project
+### 1️⃣ Clone the repository
+git clone https://github.com/fearg1989/Prices.git
+
+### 2️⃣ Build the project
+mvn clean install
+
+### 3️⃣ Run the application locally
+mvn spring-boot:run
+
+
+### 4️⃣ Check the API in Swagger
+Visit: [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
+
+## Running with Docker
+### 1️⃣ Build the Docker image
+docker build -t prices-app .
+
+### 2️⃣ Run the container
+docker run -p 8080:8080 prices-app
