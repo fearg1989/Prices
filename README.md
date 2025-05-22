@@ -1,5 +1,5 @@
 # Prices API
-🚀 Project developed with **Spring Boot**, **Docker**, **Flyway**, **H2**, and **Hexagonal Architecture**.
+🚀 Project developed with **Spring Boot**, **Docker**, **Flyway**, **H2**, **Cache**, and **Hexagonal Architecture**.
 
 Autor: Felix Rodriguez
 
@@ -10,6 +10,7 @@ Email: felixalejandr33@gmail.com
 - **Spring Boot** → Backend framework.
 - **Hexagonal Architecture** → Decoupled and modular design.
 - **Flyway** → Database versioning.
+- **Cache**
 - **H2 Database** → In-memory database for testing.
 - **Docker** → Containerized deployment.
 
