@@ -44,43 +44,43 @@ public class Prices {
         this.curr = curr;
     }
 
-    public Long getBrand_id() {
+    public Long getBrandId() {
         return brand_id;
     }
 
-    public void setBrand_id(Long brand_id) {
+    public void setBrandId(Long brand_id) {
         this.brand_id = brand_id;
     }
 
-    public LocalDateTime getStart_date() {
+    public LocalDateTime getStartDate() {
         return start_date;
     }
 
-    public void setStart_date(LocalDateTime start_date) {
+    public void setStartDate(LocalDateTime start_date) {
         this.start_date = start_date;
     }
 
-    public LocalDateTime getEnd_date() {
+    public LocalDateTime getEndDate() {
         return end_date;
     }
 
-    public void setEnd_date(LocalDateTime end_date) {
+    public void setEndDate(LocalDateTime end_date) {
         this.end_date = end_date;
     }
 
-    public Long getPrice_list() {
+    public Long getPriceList() {
         return price_list;
     }
 
-    public void setPrice_list(Long price_list) {
+    public void setPriceList(Long price_list) {
         this.price_list = price_list;
     }
 
-    public Long getProduct_id() {
+    public Long getProductId() {
         return product_id;
     }
 
-    public void setProduct_id(Long product_id) {
+    public void setProductId(Long product_id) {
         this.product_id = product_id;
     }
 

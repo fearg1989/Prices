@@ -1,0 +1,65 @@
+{
+	"info": {
+		"_postman_id": "8308e397-6b49-44d6-9ea6-17600266a7e4",
+		"name": "Prices",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39068396"
+	},
+	"item": [
+		{
+			"name": "getPrices",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/prices/find?product_id=35455&brand_id=1&application_date=2020-06-14 21:00:00",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"prices",
+						"find"
+					],
+					"query": [
+						{
+							"key": "product_id",
+							"value": "35455"
+						},
+						{
+							"key": "brand_id",
+							"value": "1"
+						},
+						{
+							"key": "application_date",
+							"value": "2020-06-14 21:00:00"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getSwagger",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v3/api-docs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v3",
+						"api-docs"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

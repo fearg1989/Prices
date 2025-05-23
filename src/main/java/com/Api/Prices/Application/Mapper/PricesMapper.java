@@ -8,11 +8,11 @@ import org.springframework.stereotype.Component;
 public class PricesMapper {
     public PricesDTO toDto(Prices price) {
         PricesDTO dto = new PricesDTO();
-        dto.setBrandId(price.getBrand_id());
-        dto.setProductId(price.getProduct_id());
-        dto.setPriceList(price.getPrice_list());
-        dto.setStartDate(price.getStart_date());
-        dto.setEndDate(price.getEnd_date());
+        dto.setBrandId(price.getBrandId());
+        dto.setProductId(price.getProductId());
+        dto.setPriceList(price.getPriceList());
+        dto.setStartDate(price.getStartDate());
+        dto.setEndDate(price.getEndDate());
         dto.setPrice(price.getPrice());
         dto.setCurrency(price.getCurr());
         return dto;
@@ -20,11 +20,11 @@ public class PricesMapper {
 
     public Prices toEntity(PricesDTO dto) {
         Prices price = new Prices();
-        price.setBrand_id(dto.getBrandId());
-        price.setProduct_id(dto.getProductId());
-        price.setPrice_list(dto.getPriceList());
-        price.setStart_date(dto.getStartDate());
-        price.setEnd_date(dto.getEndDate());
+        price.setBrandId(dto.getBrandId());
+        price.setProductId(dto.getProductId());
+        price.setPriceList(dto.getPriceList());
+        price.setStartDate(dto.getStartDate());
+        price.setEndDate(dto.getEndDate());
         price.setPrice(dto.getPrice());
         price.setCurr(dto.getCurrency());
         return price;
