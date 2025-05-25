@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +23,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
+@lombok.Generated
 @RestController
 @RequestMapping("/api/prices")
 @Tag(name = "Prices API")
@@ -45,11 +47,11 @@ public class PricesControllers {
     })
     public ResponseEntity<?> getPrices(
             @Parameter(description = "Product ID", example = "35455")
-            @RequestParam Long product_id,
+            @RequestParam @NotNull Long product_id,
             @Parameter(description = "Brand ID", example = "1")
-            @RequestParam Long brand_id,
+            @RequestParam @NotNull Long brand_id,
             @Parameter(description = "Application date in format yyyy-MM-dd HH:mm:ss", example = "2020-06-14 10:00:00")
-            @RequestParam String application_date) {
+            @RequestParam @NotNull String application_date) {
         LocalDateTime date = LocalDateTime.parse(application_date, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         PricesDTO price = pricesServices.getPrices(product_id, brand_id, date);
 

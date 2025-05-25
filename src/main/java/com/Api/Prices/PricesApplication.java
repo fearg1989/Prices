@@ -6,6 +6,7 @@ import org.springframework.cache.annotation.EnableCaching;
 
 @SpringBootApplication
 @EnableCaching
+@lombok.Generated
 public class PricesApplication {
 
 	public static void main(String[] args) {

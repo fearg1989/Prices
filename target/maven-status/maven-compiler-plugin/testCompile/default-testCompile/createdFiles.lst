@@ -1,1 +1,4 @@
 com/Api/Prices/PricesApplicationTests.class
+com/Api/Prices/Adapters/Rest/PricesControllersIT.class
+com/Api/Prices/Domain/Model/PricesTest.class
+com/Api/Prices/Functional/PricesFlowFunctionalTest.class

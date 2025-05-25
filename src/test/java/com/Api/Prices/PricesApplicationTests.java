@@ -22,7 +22,10 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Map;
 
+import static org.hibernate.validator.internal.util.Contracts.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -122,7 +125,7 @@ class PricesApplicationTests {
 		BigDecimal priceValue = new BigDecimal("99.99");
 		String curr = "USD";
 
-		Prices prices = new Prices(brandId, startDate, endDate, priceList, productId, priority, priceValue, curr);
+		Prices prices = new Prices(null, brandId, startDate, endDate, priceList, productId, priority, priceValue, curr);
 
 		assertEquals(brandId, prices.getBrandId());
 		assertEquals(startDate, prices.getStartDate());
@@ -134,17 +137,64 @@ class PricesApplicationTests {
 		assertEquals(curr, prices.getCurr());
 	}
 
+	@Test
+	void testNoArgsConstructorAndSettersAndGetters() {
+		Prices prices = new Prices();
+		prices.setPricesId(1L);
+		prices.setBrandId(2L);
+		prices.setStartDate(LocalDateTime.of(2020, 1, 1, 10, 0));
+		prices.setEndDate(LocalDateTime.of(2020, 1, 2, 10, 0));
+		prices.setPriceList(3L);
+		prices.setProductId(4L);
+		prices.setPriority(5L);
+		prices.setPrice(new BigDecimal("99.99"));
+		prices.setCurr("EUR");
+
+		assertEquals(1L, prices.getPricesId());
+		assertEquals(2L, prices.getBrandId());
+		assertEquals(LocalDateTime.of(2020, 1, 1, 10, 0), prices.getStartDate());
+		assertEquals(LocalDateTime.of(2020, 1, 2, 10, 0), prices.getEndDate());
+		assertEquals(3L, prices.getPriceList());
+		assertEquals(4L, prices.getProductId());
+		assertEquals(5L, prices.getPriority());
+		assertEquals(new BigDecimal("99.99"), prices.getPrice());
+		assertEquals("EUR", prices.getCurr());
+	}
+
+	@Test
+	void testLombokGeneratedMethods() {
+		LocalDateTime now = LocalDateTime.now();
+		Prices p1 = new Prices(1L, 1L, now, now, 1L, 1L, 1L, BigDecimal.ONE, "EUR");
+		Prices p2 = new Prices();
+		p2.setPricesId(1L);
+		p2.setBrandId(1L);
+		p2.setStartDate(now);
+		p2.setEndDate(now);
+		p2.setPriceList(1L);
+		p2.setProductId(1L);
+		p2.setPriority(1L);
+		p2.setPrice(BigDecimal.ONE);
+		p2.setCurr("EUR");
+
+		assertEquals(p1, p2);
+		assertEquals(p1.hashCode(), p2.hashCode());
+		assertNotNull(p1.toString());
+		assertEquals(1L, p1.getPricesId());
+		assertEquals("EUR", p1.getCurr());
+	}
+
 	private final PricesMapper mapper = new PricesMapper();
 
 	@Test
 	void testToDto() {
 		Prices prices = new Prices(
-				1L,
+				null, // pricesId
+				1L, // brandId
 				LocalDateTime.of(2023, 1, 1, 10, 0),
 				LocalDateTime.of(2023, 1, 2, 10, 0),
-				2L,
-				3L,
-				4L,
+				2L, // priceList
+				3L, // productId
+				4L, // priority
 				new BigDecimal("99.99"),
 				"EUR"
 		);
@@ -226,10 +276,6 @@ class PricesApplicationTests {
 		assertEquals("Bad Request", ((Map<?, ?>) response.getBody()).get("error"));
 		assertEquals("Missing parameter: product_id", ((Map<?, ?>) response.getBody()).get("message"));
 		assertEquals("/api/prices/find", ((Map<?, ?>) response.getBody()).get("path"));
-	}
-
-	@Test
-	void contextLoads() {
 	}
 
 }
