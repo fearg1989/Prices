@@ -1,0 +1,10 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+Prices,com.Api.Prices.Domain.Model,Prices,0,86,0,0,0,36,0,18,0,18
+Prices,com.Api.Prices.Domain.Exception,PriceNotFoundException,0,4,0,0,0,2,0,1,0,1
+Prices,com.Api.Prices.Application.Dto,PricesDTO,0,52,0,0,0,22,0,15,0,15
+Prices,com.Api.Prices.Adapters.Rest,PricesControllers,5,53,1,1,1,11,1,2,0,2
+Prices,com.Api.Prices,PricesApplication,5,3,0,0,2,1,1,1,1,1
+Prices,com.Api.Prices.Adapters.Exception,GlobalExceptionHandler,0,133,0,0,0,22,0,4,0,4
+Prices,com.Api.Prices.Application.Mapper,PricesMapper,0,71,0,0,0,19,0,3,0,3
+Prices,com.Api.Prices.Application.Service,PricesServicesImpl,0,38,0,0,0,8,0,3,0,3
+Prices,com.Api.Prices.Infrastructure.Repository,PriceJpaRepository,0,13,0,0,0,4,0,2,0,2

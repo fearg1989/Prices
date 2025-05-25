@@ -12,16 +12,16 @@ public class Prices {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long prices_id;
-    @Column(name = "brand_id", nullable = false)
-    private Long brand_id;
-    @Column(name = "start_date", nullable = false)
-    private LocalDateTime start_date;
-    @Column(name = "end_date", nullable = false)
-    private LocalDateTime end_date;
-    @Column(name = "price_list", nullable = false)
-    private Long price_list;
+    @Column(name = "brandId", nullable = false)
+    private Long brandId;
+    @Column(name = "startDate", nullable = false)
+    private LocalDateTime startDate;
+    @Column(name = "endDate", nullable = false)
+    private LocalDateTime endDate;
+    @Column(name = "priceList", nullable = false)
+    private Long priceList;
     @Column(name = "product_id", nullable = false)
-    private Long product_id;
+    private Long productId;
     @Column(name = "priority", nullable = false)
     private Long priority;
     @Column(name = "price", nullable = false)
@@ -32,56 +32,56 @@ public class Prices {
     public Prices() {
     }
 
-    public Prices(Long brand_id, LocalDateTime start_date, LocalDateTime end_date, Long price_list, Long product_id, Long priority,
+    public Prices(Long brandId, LocalDateTime startDate, LocalDateTime endDate, Long priceList, Long productId, Long priority,
                   BigDecimal price, String curr) {
-        this.brand_id = brand_id;
-        this.start_date = start_date;
-        this.end_date = end_date;
-        this.price_list = price_list;
-        this.product_id = product_id;
+        this.brandId = brandId;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.priceList = priceList;
+        this.productId = productId;
         this.priority = priority;
         this.price = price;
         this.curr = curr;
     }
 
     public Long getBrandId() {
-        return brand_id;
+        return brandId;
     }
 
-    public void setBrandId(Long brand_id) {
-        this.brand_id = brand_id;
+    public void setBrandId(Long brandId) {
+        this.brandId = brandId;
     }
 
     public LocalDateTime getStartDate() {
-        return start_date;
+        return startDate;
     }
 
-    public void setStartDate(LocalDateTime start_date) {
-        this.start_date = start_date;
+    public void setStartDate(LocalDateTime startDate) {
+        this.startDate = startDate;
     }
 
     public LocalDateTime getEndDate() {
-        return end_date;
+        return endDate;
     }
 
-    public void setEndDate(LocalDateTime end_date) {
-        this.end_date = end_date;
+    public void setEndDate(LocalDateTime endDate) {
+        this.endDate = endDate;
     }
 
     public Long getPriceList() {
-        return price_list;
+        return priceList;
     }
 
-    public void setPriceList(Long price_list) {
-        this.price_list = price_list;
+    public void setPriceList(Long priceList) {
+        this.priceList = priceList;
     }
 
     public Long getProductId() {
-        return product_id;
+        return productId;
     }
 
-    public void setProductId(Long product_id) {
-        this.product_id = product_id;
+    public void setProductId(Long productId) {
+        this.productId = productId;
     }
 
     public Long getPriority() {

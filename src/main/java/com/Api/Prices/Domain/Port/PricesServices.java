@@ -6,6 +6,6 @@ import com.Api.Prices.Application.Dto.PricesDTO;
 
 public interface PricesServices {
 
-    PricesDTO getPrices(Long product_id, Long brand_id, LocalDateTime application_date);
+    PricesDTO getPrices(Long productId, Long brandId, LocalDateTime applicationDate);
 
 }

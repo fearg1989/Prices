@@ -22,14 +22,14 @@ public class PricesServicesImpl implements com.Api.Prices.Domain.Port.PricesServ
     }
 
     @Override
-    @Cacheable(value = "pricesCache", key = "#product_id + '-' + #brand_id + '-' + #application_date")
-    public PricesDTO getPrices(Long product_id, Long brand_id, LocalDateTime application_date) {
-        Prices price = pricesRepository.findPrice(product_id, brand_id, application_date)
+    @Cacheable(value = "pricesCache", key = "#productId + '-' + #brandId + '-' + #applicationDate")
+    public PricesDTO getPrices(Long productId, Long brandId, LocalDateTime applicationDate) {
+        Prices price = pricesRepository.findPrice(productId, brandId, applicationDate)
                 .stream().findFirst()
                 .orElseThrow(() -> new PriceNotFoundException(
-                        "No price found for product: " + product_id +
-                                " and brand " + brand_id +
-                                " at " + application_date));
+                        "No price found for product: " + productId +
+                                " and brand " + brandId +
+                                " at " + applicationDate));
 
         return pricesMapper.toDto(price);
     }

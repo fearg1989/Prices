@@ -34,3 +34,9 @@ docker build -t prices-app .
 
 ### 2️⃣ Run the container
 docker run -p 8080:8080 prices-app
+
+## Postman Collection
+docs/postman/Prices.postman_collection.json
+
+## JaCoco Report
+target/site/jacoco/index.html

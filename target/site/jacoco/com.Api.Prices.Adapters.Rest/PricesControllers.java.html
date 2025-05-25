@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PricesControllers.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Prices</a> &gt; <a href="index.source.html" class="el_package">com.Api.Prices.Adapters.Rest</a> &gt; <span class="el_source">PricesControllers.java</span></div><h1>PricesControllers.java</h1><pre class="source lang-java linenums">package com.Api.Prices.Adapters.Rest;
+
+import com.Api.Prices.Application.Dto.PricesDTO;
+import com.Api.Prices.Domain.Port.PricesServices;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+import java.util.Map;
+
+@RestController
+@RequestMapping(&quot;/api/prices&quot;)
+@Tag(name = &quot;Prices API&quot;)
+<span class="fc" id="L28">public class PricesControllers {</span>
+
+    @Autowired
+    private PricesServices pricesServices;
+
+    @GetMapping(&quot;/find&quot;)
+    @Operation(summary = &quot;Get price by date&quot;)
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = &quot;200&quot;, description = &quot;Prices found&quot;,
+                    content = @Content(mediaType = &quot;application/json&quot;,
+                            examples = @ExampleObject(value = &quot;{ \&quot;brand_id\&quot;: 1, \&quot;product_id\&quot;: 35455, \&quot;price_list\&quot;: 1, \&quot;price\&quot;: 35.50, \&quot;application_date\&quot;: \&quot;2020-06-14 10:00:00\&quot;}&quot;))),
+            @ApiResponse(responseCode = &quot;400&quot;, description = &quot;Bad Request&quot;,
+                    content = @Content(mediaType = &quot;application/json&quot;,
+                            examples = @ExampleObject(value = &quot;{ \&quot;status\&quot;: 400, \&quot;error\&quot;: \&quot;Bad Request\&quot;, \&quot;message\&quot;: \&quot;For input string: \\\&quot;f\\\&quot;\&quot;, \&quot;timestamp\&quot;: \&quot;2025-05-22T15:30:45\&quot;, \&quot;path\&quot;: \&quot;/api/prices/find\&quot; }&quot;))),
+            @ApiResponse(responseCode = &quot;404&quot;, description = &quot;Prices not found&quot;,
+                    content = @Content(mediaType = &quot;application/json&quot;,
+                            examples = @ExampleObject(value = &quot;{ \&quot;status\&quot;: 404, \&quot;error\&quot;: \&quot;Not Found\&quot;, \&quot;message\&quot;: \&quot;No price found for product: 35455 and brand 3 at 2020-06-14T21:00\&quot;, \&quot;timestamp\&quot;: \&quot;2025-05-22T15:30:45\&quot;, \&quot;path\&quot;: \&quot;/api/prices/find\&quot; }&quot;)))
+    })
+    public ResponseEntity&lt;?&gt; getPrices(
+            @Parameter(description = &quot;Product ID&quot;, example = &quot;35455&quot;)
+            @RequestParam Long product_id,
+            @Parameter(description = &quot;Brand ID&quot;, example = &quot;1&quot;)
+            @RequestParam Long brand_id,
+            @Parameter(description = &quot;Application date in format yyyy-MM-dd HH:mm:ss&quot;, example = &quot;2020-06-14 10:00:00&quot;)
+            @RequestParam String application_date) {
+<span class="fc" id="L53">        LocalDateTime date = LocalDateTime.parse(application_date, DateTimeFormatter.ofPattern(&quot;yyyy-MM-dd HH:mm:ss&quot;));</span>
+<span class="fc" id="L54">        PricesDTO price = pricesServices.getPrices(product_id, brand_id, date);</span>
+
+<span class="pc bpc" id="L56" title="1 of 2 branches missed.">        if (price != null) {</span>
+<span class="fc" id="L57">            Map&lt;String, Object&gt; response = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L58">            response.put(&quot;product_id&quot;, price.getProductId());</span>
+<span class="fc" id="L59">            response.put(&quot;brand_id&quot;, price.getBrandId());</span>
+<span class="fc" id="L60">            response.put(&quot;price_list&quot;, price.getPriceList());</span>
+<span class="fc" id="L61">            response.put(&quot;application_date&quot;, application_date);</span>
+<span class="fc" id="L62">            response.put(&quot;price&quot;, price.getPrice());</span>
+<span class="fc" id="L63">            return ResponseEntity.ok(response);</span>
+        }
+<span class="nc" id="L65">        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(&quot;No price found for given parameters&quot;);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

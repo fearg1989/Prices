@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface SpringDataPriceRepository extends JpaRepository<Prices, Long> {
 
-    @Query("SELECT p FROM Prices p WHERE p.product_id = :product_id AND p.brand_id = :brand_id AND :application_date BETWEEN p.start_date AND p.end_date ORDER BY p.priority DESC")
-    List<Prices> findPrice(Long product_id, Long brand_id, LocalDateTime application_date);
+    @Query("SELECT p FROM Prices p WHERE p.productId = :productId AND p.brandId = :brandId AND :applicationDate BETWEEN p.startDate AND p.endDate ORDER BY p.priority DESC")
+    List<Prices> findPrice(Long productId, Long brandId, LocalDateTime applicationDate);
 
 }

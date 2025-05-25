@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PricesMapper.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Prices</a> &gt; <a href="index.source.html" class="el_package">com.Api.Prices.Application.Mapper</a> &gt; <span class="el_source">PricesMapper.java</span></div><h1>PricesMapper.java</h1><pre class="source lang-java linenums">package com.Api.Prices.Application.Mapper;
+
+import com.Api.Prices.Application.Dto.PricesDTO;
+import com.Api.Prices.Domain.Model.Prices;
+import org.springframework.stereotype.Component;
+
+@Component
+<span class="fc" id="L8">public class PricesMapper {</span>
+    public PricesDTO toDto(Prices price) {
+<span class="fc" id="L10">        PricesDTO dto = new PricesDTO();</span>
+<span class="fc" id="L11">        dto.setBrandId(price.getBrandId());</span>
+<span class="fc" id="L12">        dto.setProductId(price.getProductId());</span>
+<span class="fc" id="L13">        dto.setPriceList(price.getPriceList());</span>
+<span class="fc" id="L14">        dto.setStartDate(price.getStartDate());</span>
+<span class="fc" id="L15">        dto.setEndDate(price.getEndDate());</span>
+<span class="fc" id="L16">        dto.setPrice(price.getPrice());</span>
+<span class="fc" id="L17">        dto.setCurrency(price.getCurr());</span>
+<span class="fc" id="L18">        return dto;</span>
+    }
+
+    public Prices toEntity(PricesDTO dto) {
+<span class="fc" id="L22">        Prices price = new Prices();</span>
+<span class="fc" id="L23">        price.setBrandId(dto.getBrandId());</span>
+<span class="fc" id="L24">        price.setProductId(dto.getProductId());</span>
+<span class="fc" id="L25">        price.setPriceList(dto.getPriceList());</span>
+<span class="fc" id="L26">        price.setStartDate(dto.getStartDate());</span>
+<span class="fc" id="L27">        price.setEndDate(dto.getEndDate());</span>
+<span class="fc" id="L28">        price.setPrice(dto.getPrice());</span>
+<span class="fc" id="L29">        price.setCurr(dto.getCurrency());</span>
+<span class="fc" id="L30">        return price;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
